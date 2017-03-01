@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+
+
+<table id="mytable1" style="width:100%">
+    <tbody>
+    <thead>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th data-sort-default>Age</th>
+    </tr>
+    </thead>
+    <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td class="age">50</td>
+    </tr>
+    <tr>
+        <td>kula</td>
+        <td>bula</td>
+        <td class="age">20</td>
+    </tr>
+
+    <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td class="age">80</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table id="mytable2" style="width:100%">
+    <tbody>
+    <thead>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td age="true">50</td>
+    </tr>
+    <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td age="true">94</td>
+    </tr>
+    <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td age="true">80</td>
+    </tr>
+    </tbody>
+</table>
+
+<script
+        src='https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.0.0/tablesort.min.js'
+></script>
+<script
+        src='https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.0.0/src/sorts/tablesort.number.js'
+></script>
+<script>
+    //querySelectorAll('table tr')
+    //document.querySelectorAll("table tr").forEach((el) => {
+    //if (parseInt(el.cells[2].innerText, 10) >= 52)
+    //el.style.color = 'red';
+    //})
+
+
+    var sort = new Tablesort(document.getElementById('mytable1'), { descending: true });
+
+    // Make some Ajax request to fetch new data and on success:
+    sort.refresh();
+
+    var cells = document.querySelectorAll("#mytable1 > tbody > tr").forEach((el) => {if (parseInt(el.cells[2].innerText, 10) >= 30) el.style.color = 'blue'});
+
+</script>
+
+<p>Try to change the border-spacing to 5px.</p>
+
+</body>
+</html>
